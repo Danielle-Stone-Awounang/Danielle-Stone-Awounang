@@ -1,9 +1,33 @@
+// ======================= SHOW MENU =======================
+const navMenu = document.getElementById('nav-menu'),
+navToggle = document.getElementById('nav-toggle'),
+navClose = document.getElementById('nav-close');
+
+// ======================= MENU SHOW =======================
+if(navToggle){
+    navToggle.addEventListener('click', ()=>{
+        navMenu.classList.add('show-menu');
+    });
+}
 
 // ======================= MENU HIDDEN ======================= 
 // Validate if constant exists 
+if(navClose){
+    navClose.addEventListener('click', ()=>{
+        navMenu.classList.remove('show-menu');
+    });
+}
 
 // ======================= REVOKE MENU MOBILE ======================= 
+const navLink = document.querySelectorAll('.nav__link');
 
+function linkAction(){
+    const navMenu = document.getElementById('nav-menu');
+    // wen we click on eac nav__link , we remove the sow-menu class
+    navMenu.classList.remove('show-menu');
+}
+
+navLink.forEach((n)=>n.addEventListener('click',linkAction))
 // ======================= SCROLL SECTIONS ACTIVE LINK ======================= 
 
 // ======================= CHANGE BACKGROUND HEADER =======================
@@ -105,3 +129,28 @@ const sendEmail = (e) =>{
 };
 
 contactform.addEventListener('submit', sendEmail);
+
+ /*================= SCROLL REVEAL ANIMATION ================*/
+ const sr = ScrollReveal({
+    origin: 'top',
+    distance: '80px',
+    duration: 2000,
+    reset: true
+});
+
+// SCROLL HOME 
+sr.reveal('.home__subtitle',{})
+sr.reveal('.home__title',{delay:400})
+sr.reveal('.home__img',{origin:'right',delay:600, distance:'300px'})
+sr.reveal('.cv',{delay:300, distance:'100px'})
+
+// SCROLL ABOUT 
+sr.reveal('.about__description',{delay:500})
+sr.reveal('.tabs__btns,.tab__active')
+
+// SCROLL SERVICES 
+sr.reveal('.section__description,.services__item',{delay:500})
+sr.reveal('.services__icon',{origin:'left',delay:200})
+
+// PORTOFOLIO
+sr.reveal('.portfolio__item',{delay:200})

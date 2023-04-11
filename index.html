@@ -16,6 +16,10 @@
 <body>
     <!-- ======================= HEADER ======================= -->
     <header class="header scroll-header" id="header">
+
+        <i class="uil uil-sun theme__clair"></i>
+        <i class="uil uil-moon theme__sombre"></i>
+
         <nav class="nav container">
             <a href="" class="nav__logo">
                 <span class="stone"><span class="apostrophe">d</span>ev<span class="apostrophe">'S</span>tone</span>
@@ -25,7 +29,7 @@
 
                 <ul class="nav__list">
 
-                    <li><a href="#home" class="nav__link active-link">Home</a></li>
+                    <li><a href="#home" class="nav__link ">Home</a></li>
 
                     <li><a href="#about" class="nav__link ">About</a></li>
                     
@@ -103,11 +107,13 @@
                 <div class="home__content">
                     <span class="home__subtitle">Welcome To My World</span>
                     <h1 class="home__title">
-                        Hi, I'm Danielle Stone Awounang Temfack, you can call me 
-                        <span class="stone"><span class="apostrophe">d</span>ev<span class="apostrophe">'S</span>tone</span> . 
+                        Hi, I'm Danielle Stone Awounang Temfack.
                         I'm <span>JS Developer.</span> 
                         <br> Based in Cameroun. 
                     </h1>
+                    <a href="assets/img/Awounang Temfack Danielle Stone.pdf" download="Awounang Temfack Danielle Stone.pdf">
+                        <div class="btn cv">Download my CV</div>
+                    </a>
                 </div>
                 <img src="assets/img/home.jpg" alt="" class="home__img">
             </div>
@@ -116,7 +122,7 @@
         <!-- ======================= ABOUT ======================= -->
         <section class="about section" id="about">
             <div class="about__container container grid">
-                <img src="assets/img/about.jpg" alt="" class="about__img">
+                <img src="assets/img/about.png" alt="" class="about__img">
 
                 <div class="about__content">
                     <h2 class="section__title">About me</h2>
@@ -340,11 +346,11 @@
                     <p class="contact__description">
                         I'm available for freelance work. Connect with me via :
                         <br> 
-                        <a href="tel:+237656544779 "><i class="uil uil-phone"></i> : +237 656 544 779</a>
+                        <a href="tel:+237656544779 " class="contact__link"><i class="uil uil-phone"></i> : +237 656 544 779</a>
                         <br>
-                        <a href=""><i class="uil uil-whatsapp"></i> : +237 656 547 779</a>
+                        <a href="" class="contact__link"><i class="uil uil-whatsapp" ></i> : +237 656 547 779</a>
                         <br> 
-                        <a href="mailto:admin@example.com"><i class="uil uil-envelope"></i> : stonetemfack@gmail.com</a>
+                        <a href="mailto:admin@example.com" class="contact__link"><i class="uil uil-envelope"></i> : stonetemfack@gmail.com</a>
                     </p>
 
                     <form action="" class="contact__form" id="contact-form">
@@ -398,7 +404,7 @@
                     </form>
                 </div>
 
-                <img src="assets/img/img-contact.jpg" alt="" class="contact__img">
+                <!-- <img src="assets/img/img-contact.jpg" alt="" class="contact__img"> -->
             </div>
         </section>
 
@@ -462,6 +468,9 @@
     <a href="#" class="scrollup show-scroll" id="scroll-up">
         <i class="uil uil-angle-up scrollup__icon"></i>
     </a>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
 
     <!-- ======================= EMAIL JS ======================= -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>

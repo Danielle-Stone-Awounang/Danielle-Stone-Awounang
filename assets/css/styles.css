@@ -12,8 +12,16 @@
     --title-color: hsl(0,0%, 100%);
     --text-color: hsl(0,0%,77%);
     --body-color: hsl(0, 0%, 6%) ;
-    --container-color: hsl(0, 0%, 10%);
+    --container-color: hsla(0, 0%, 10%, 0.881);
     --border-color: hsla(0, 0%, 100%, 0.2) ;
+
+    /* Color mode HSL(hue, saturation, Darkness)  */
+    --first-color: hsl(350, 98%, 64%) ;
+    --title-color: hsl(0, 0%, 6%);
+    --text-color: hsl(0, 0%, 10%);
+    --body-color: hsl(0,0%, 100%) ;
+    --container-color: hsla(0, 22%, 92%, 0.911);
+    --border-color: hsla(0, 2%, 68%, 0.918) ;
 
     /* ======================= Font and typography ======================= */
     /* .5rem = 8px | 1rem = 16px  */
@@ -21,12 +29,12 @@
     --second-font:  'Montserrat', sans-serif ;
     --third-font:'Inspiration', cursive;
 
-    --big-font-size:4.5rem ;
-    --h1-font-size: 3.75rem;
+    --big-font-size:clamp(2rem, 0.9706rem + 4.7059vw, 4.5rem);
+    --h1-font-size: clamp(1.75rem, 0.9265rem + 3.7647vw, 3.75rem);
     --h2-font-size:1.75rem ;
     --h3-font-size: 1.5rem;
-    --normal-font-size:1.125rem ;
-    --small-font-size:1rem ;
+    --normal-font-size:1.5rem ;
+    --small-font-size:1.25rem ;
     --smaller-font-size: 0.875rem;
     
     /* ======================= Font weight =======================  */
@@ -51,11 +59,12 @@
 /* Responsive typography  */
 @media screen and (max-width:992px){
     :root{
-        --h2-font-size: ;
-        --h3-font-size: ;
-        --normal-font-size: ;
-        --small-font-size: ;
-        --smaller-font-size: ;
+        --header-hight:5rem;
+        --h2-font-size:1.5rem ;
+        --h3-font-size:1.25rem ;
+        --normal-font-size:1rem ;
+        --small-font-size: 0.9375rem;
+        --smaller-font-size:0.813rem ;
     }
 }
 
@@ -117,8 +126,8 @@ textarea{
 /* ======================= REUSABLE CSS CLASSES =======================  */
 .container{
     max-width: 1260px;
-    margin-inline: auto;
-    padding-inline: o.75rem;
+    margin: auto;
+    padding: o.75rem;
 }
 
 .grid{
@@ -142,8 +151,12 @@ textarea{
 
 .section__description{
     max-width: 600px;
-    margin-inline: auto;
+    margin: auto;
     margin-bottom: 3.75rem;
+}
+
+.contact__form .btn{
+    color: antiquewhite;
 }
 
 .btn{
@@ -173,6 +186,7 @@ textarea{
     width: 100%;
     z-index: var(--z-fixed);
     padding: 0 9rem;
+    transition: all 0.3s var(--transition);
 }
 
 .nav,
@@ -210,18 +224,19 @@ textarea{
     transform: translate(-0.25rem);
 }
 
-.nav__link-btn{
+.nav__link-btn, .home__content .btn{
     font-size: var(--smaller-font-size);
     background-color: transparent;
     border-color: var(--border-color);
     padding: 0.625rem 1.25rem;
+    text-align: center;
     transition: all 0.4s var(--transition);
 }
 
-.nav__link-btn:hover{
+.nav__link-btn:hover, .home__content .btn:hover{
     background-color: var(--first-color);
     border-color: var(--first-color);
-    color: var(--title-color);
+    color: hsl(0,0%, 100%);
 }
 
 .nav__socials{
@@ -236,7 +251,7 @@ textarea{
 
 /* Active link  */
 .active-link,
-.nav__link-btn:hover{
+.nav__link:hover{
     color: var(--first-color);
 }
 
@@ -279,7 +294,7 @@ textarea{
 }
 .home__title{
     font-family: var(--second-font);
-    font-size: 20px;
+    font-size: var(--big-font-size);
     font-weight: var(--weight-500);
 }
 .home__title span{
@@ -293,6 +308,9 @@ textarea{
 }
 .stone .apostrophe{
     color: var(--title-color);
+}
+.home__content .btn{
+    margin-top: 7rem ;
 }
 .home__img{
     width:450px;
@@ -488,7 +506,7 @@ tabs__description span:first-child{
 
 /* ======================= CONTACT =======================  */
 .contact__container{
-    grid-template-columns:repeat(2, 1fr) ;
+    grid-template-columns:repeat(1fr) ;
     align-items: center;
     column-gap: 4rem;
 }
@@ -602,7 +620,7 @@ tabs__description span:first-child{
  }
 
  .scrollup__icon{
-    color: var(--first-color);
+    color: whitesmoke;
     font-size: 2.25rem;
     line-height: 1;
  }
@@ -612,10 +630,26 @@ tabs__description span:first-child{
     bottom: 3rem;
  } 
 
+ /* =========================== THEMES ===========================  */
+ .theme__clair, .theme__sombre{
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    color: whitesmoke;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(139, 135, 135);
+    display: grid;
+    place-items: center;
+    z-index: var(--z-fixed);
+    transition: all 0.5s --transition;
+ }
+
  /* ======================= BREAKPOINTS ======================= */
 
  /* For large devices */
-
  @media screen and (max-width:1200px){
 
     .section, .header{
@@ -623,7 +657,247 @@ tabs__description span:first-child{
     }
 
     .home{
-        padding: 16rem 1rem;
+        padding: 11rem;
+    }
+
+    .container{
+        max-width: 960px;
+    }
+
+    .nav__btns{
+        display: none;
+    }
+
+    .home__container,
+    .about__container{
+        grid-template-columns: 1fr;
+    }
+
+    .home__container{
+        row-gap: 2rem;
+    }
+
+    .home__content{
+        order: 1;
+    }
+
+    .home__img,
+    .about__img{
+        margin: auto;
+    }
+
+    .home__img{
+        border: 0.5rem solid var(--container-color);
+        width: 380px;
+        height: 380px;
+    }
+
+    .about__container{
+        row-gap: 2.5rem;
+    }
+
+    .services__container,
+    .portfolio__container{
+        grid-template-columns: repeat(2, 1fr
+        );
+    }
+
+    .contact__container{
+        column-gap: 2rem;
+    }
+
+ }
+
+ @media screen and (max-width:992px) {
+    .container{
+        max-width: 720px;
+    }
+
+    .nav{
+        height: var(--header-height);
+        column-gap: 1.25rem;
+    }
+
+    .nav__logo{
+        font-size: 2rem;
+    }
+
+    .nav__btns,
+    .nav__toggle,
+    .nav__close{
+        display: block;
+    }
+
+    .nav__link-btn{
+        display: none;
+    }
+
+    .nav__menu{
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 60vw;
+        height: 100vh;
+        background-color: var(--container-color);
+        padding: 3.5rem;
+        transition: all 0.8s var(--transition);
+    }
+
+    .show-menu{
+        right: 0;
+    }
+
+    .nav__list{
+        flex-direction: column;
+        row-gap: 1.125rem;
+    }
+
+    .nav__close{
+        font-size: 1.5em;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        cursor:pointer;
+    }
+
+    .nav__socials{
+        column-gap: 1rem;
+    }
+
+    .nav__toggle{
+        font-size: var(--h2-font-size);
+    }
+
+    .nav__close,
+    .nav__toggle{
+        cursor: pointer;
+    }
+
+    .home{
+        padding-top: 9rem;
+    }
+
+    .home__img{
+        width: 320px;
+        height: 320px;
+    }
+
+    .services__icon{
+        font-size: 2.5rem;
+    }
+
+    .contact__description{
+        grid-template-columns: 1fr;
+        row-gap: 2rem;
+    }
+
+    .contact__content{
+        order: 1;
+    }
+
+    .contact__description{
+        margin-bottom: 2rem;
+    }
+
+    .footer__social-link{
+        font-size: var(--smaller-font-size);
+        width: 36px;
+        height: 36px;
+    }
+
+    .scrollup{
+        width: 42px;
+        height: 42px;
+    }
+
+    .scollup__icon{
+        font-size: 2rem;
+    }
+ }
+
+ /* For medium devices */
+ @media screen and (max-width:768px) {
+    .home{
+        padding: 10rem 2rem;
+    }
+
+    .contact__img{
+        display: none;
+    }
+
+    .contact{
+        padding: 1rem;
+    }
+    .container{
+        max-width: 540px;
+    }
+
+    .home__img{
+        width: 280px;
+        height: 280px;
+    }
+
+    .tabs__btns{
+        flex-wrap: wrap;
+        row-gap: 0.75rem;
+        column-gap: 1.5rem;
+    }
+
+    .services__container,
+    .portfolio__container,
+    .footer__container{
+        grid-template-columns: 1fr;
+    }
+
+    .footer__container{
+        row-gap:1.5rem ;
+        justify-content: center;
+    }
+
+    .footer__copyright{
+        justify-self: center;
+    }
+ }
+
+ @media screen and (max-width:576px) {
+    .container{
+        max-width: 420px;
+    }
+    
+    .nav__menu{
+        width: 100vw;
+        padding: 2.75rem;
+    }
+
+    .home__img{
+        width: 260px;
+        height: 260px;
+    }
+
+    .services__item{
+        padding: 2rem 1.5rem;
+    }
+    
+ }
+
+ /* For smal devices */
+ @media screen and (max-width:350px) {
+    .container{
+        max-width: 320px;
+    }
+
+    .home__img{
+        width: 240px;
+        height: 240px;
+    }
+
+    .tabs__description span:last-child{
+        display: inline;
+    }
+    
+    .portfolio__data{
+        inset-inline: 1rem;
+        bottom: 1rem;
     }
 
  }
