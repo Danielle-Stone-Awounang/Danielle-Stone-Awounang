@@ -58,6 +58,11 @@ function scrollUp(){
 
  window.addEventListener('scroll', scrollUp);
 
+//  ========================== ABOUT COLOR THEME ===================== 
+
+//  ======================= ABOUT ACTIVE LINK ======================== 
+
+
 // ======================= ABOUT TABS ======================= 
 const tabs = document.querySelectorAll('[data-target]'),
 tabContents = document.querySelectorAll('[data-content]');
@@ -134,8 +139,8 @@ contactform.addEventListener('submit', sendEmail);
  const sr = ScrollReveal({
     origin: 'top',
     distance: '80px',
-    duration: 2000,
-    reset: true
+    duration: 2000
+    // reset: true
 });
 
 // SCROLL HOME 
