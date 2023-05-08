@@ -1,3 +1,11 @@
+// ====================== TYPING ANIMATION ==================
+var typed = new Typed(".typing",{
+    strings:["","Web Designer","Web Developer","JS Developer","Mobile Developer"],
+    typeSpeed:100,
+    BackSpeed:60,
+    loop:true
+})
+
 // ======================= SHOW MENU =======================
 const navMenu = document.getElementById('nav-menu'),
 navToggle = document.getElementById('nav-toggle'),
@@ -59,6 +67,18 @@ function scrollUp(){
  window.addEventListener('scroll', scrollUp);
 
 //  ========================== ABOUT COLOR THEME ===================== 
+const light_theme = document.getElementById("clair");
+
+light_theme.addEventListener('click',()=>{
+document.body.classList.toggle("light");
+    console.log("hiiiii");
+
+    if(document.body.classList.contains("light")){
+      light_theme.src = "assets/img/moon_symbol_50px.png";
+    }
+    else{light_theme.src = "assets/img/sun_50px.png ";}
+});
+
 
 //  ======================= ABOUT ACTIVE LINK ======================== 
 
